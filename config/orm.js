@@ -10,9 +10,10 @@ function printQuestionMarks(num) {
   return arr.toString();
 }
 
+
 function objToSql(ob) {
   var arr = [];
-r
+
   for (var key in ob) {
     var value = ob[key];
    
@@ -25,6 +26,7 @@ r
   }
   return arr.toString();
 }
+
 
 var orm = {
   selectAll: function(tableName) {
