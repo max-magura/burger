@@ -10,7 +10,6 @@ function printQuestionMarks(num) {
   return arr.toString();
 }
 
-
 function objToSql(ob) {
   var arr = [];
 
@@ -29,14 +28,16 @@ function objToSql(ob) {
 
 
 var orm = {
-  selectAll: function(tableName) {
-    var queryString = "SELECT * FROM ??";
-    connection.query(queryString, tableName, function(err, result) {
-      if (err) throw err;
-      console.log(result);
+  all: function(tableInput, cb) {
+    var queryString = "SELECT * FROM " + tableInput + ";";
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
     });
   },
-  insertOne: function(table, cols, vals, cb) {
+  create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -54,10 +55,9 @@ var orm = {
       }
 
       cb(result);
-
     });
   },
-  updateOne: function(table, objColVals, condition, cb) {
+  update: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
@@ -73,7 +73,6 @@ var orm = {
 
       cb(result);
     });
-
   }
 };
 

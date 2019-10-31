@@ -19,17 +19,22 @@
   <ul>
     {{#each burgers}}
       {{#unless devoured}}
-       {{> burgers/burgerList devoured=true}}
+        </li>
+          <p>{{burger_name}}</p>
+          <button class="devour" data-id="{{id}}" data-newdevoured="{{devoured}}">
+          {{#unless devoured}}DEVOUR!{{/unless}}
+        </button>
+        </li>  
       {{/unless}}
     {{/each}}
   </ul>
 </div>
 <hr>
-<div class="burgersToEat">
+{{!-- <div class="burgersEaten">
   <h3>Burgers That Have Been Devoured</h3>
   {{#each burgers}}
     {{#if devoured}}
-      {{> burgers/burgerList devoured=false}}
+      {{> burgers/burger-list devoured=false}}
     {{/if}}
   {{/each}}
-</div> 
+</div>  --}}
