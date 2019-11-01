@@ -22,12 +22,13 @@ $(function() {
   // });
 
   $(".create-form").on("submit", function(event) {
-    console.log("I HIT THE SUBMIT BUTOOOOOOOOON")
+  
+    console.log("I HIT THE SUBMIT BUTTOOOOOOOOON")
     event.preventDefault();
 
     var newBurger = {
-      name: $("#newBurg").val().trim(),
-      devoured: "false"
+      burger_name: $("#burgerSubmit").val().trim(),
+      devoured: 0
     };
 
     $.ajax("/api/burgers", {
